@@ -1,14 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { configureStore } from "@reduxjs/toolkit";
+import createSagaMiddleware from "redux-saga";
+import { Provider } from "react-redux";
+import movieReducer from "../src/redux/rducers/movieReducer";
+import addBlogReducer from "../src/redux/rducers/movieReducer";
+import blogReducer from "../src/redux/rducers/movieReducer";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import rootSaga from "./redux/sagas/sagas";
+const sagaMiddleware = createSagaMiddleware();
+const store = configureStore({
+  reducer: {
+    movies: movieReducer,
+    addBlog: addBlogReducer,
+    blogData: blogReducer,
+  },
+  middleware: [sagaMiddleware],
+});
+sagaMiddleware.run(rootSaga);
+//sagaMiddleware provides a method that is run in which we supplies/inclueds all the watcher files i.e appRootSaga
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
