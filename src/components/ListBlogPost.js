@@ -56,7 +56,7 @@ const ListBlogPost = () => {
                   scope="row"
                   className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
                 >
-                  {blog.id}
+                  <Link to="/blogs/:id">{blog.id}</Link>
                 </th>
                 <td className="px-6 py-4">{blog.title}</td>
                 <td className="px-6 py-4">{blog.body}</td>
