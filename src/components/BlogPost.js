@@ -6,23 +6,19 @@ import { useDispatch } from "react-redux";
 const BlogPost = () => {
   const dispatch = useDispatch();
   const addBlogSchema = yup.object().shape({
-    id: yup.number().min(1).max(5).required(),
     title: yup.string().min(5).max(15).required(),
     descrption: yup.string().required(),
   });
   const [blogData, setBlogData] = useState({
-    id: "",
     title: "",
     description: "",
   });
   const [blogDataError, setBlogDataError] = useState({
-    id: "",
     title: "",
     description: "",
   });
   const clearState = () => {
     setBlogData({
-      id: "",
       title: "",
       description: "",
     });
@@ -84,26 +80,6 @@ const BlogPost = () => {
         </button>
       </Link>
       <form onSubmit={handelSubmit} className="p-7 bg-gray-200">
-        <div className="mb-6">
-          <label
-            for="id"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-          >
-            Blog Id
-          </label>
-          <input
-            type="number"
-            value={blogData.id}
-            name="id"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Enter Your Id..."
-            // required
-            onChange={handleChange}
-          />
-          {blogDataError.name && (
-            <p className="text-red-700">{blogDataError.id}</p>
-          )}
-        </div>
         <div className="mb-6">
           <label
             for="title"

@@ -9,7 +9,8 @@ import { Provider } from "react-redux";
 import movieReducer from "../src/redux/rducers/movieReducer";
 import addBlogReducer from "../src/redux/rducers/movieReducer";
 import blogReducer from "../src/redux/rducers/movieReducer";
-
+import commentReducer from "../src/redux/rducers/movieReducer";
+import commentDataReducer from "../src/redux/rducers/movieReducer";
 import rootSaga from "./redux/sagas/sagas";
 const sagaMiddleware = createSagaMiddleware();
 const store = configureStore({
@@ -17,6 +18,8 @@ const store = configureStore({
     movies: movieReducer,
     addBlog: addBlogReducer,
     blogData: blogReducer,
+    commentData: commentReducer,
+    commentBlogData: commentDataReducer,
   },
   middleware: [sagaMiddleware],
 });

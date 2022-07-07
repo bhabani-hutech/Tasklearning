@@ -97,4 +97,104 @@ const blogReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default combineReducers({ movieReducer, addBlogReducer, blogReducer });
+const blogDataReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "FETCH_BLOG_DATA":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: true,
+        result: null,
+        error: null,
+      };
+    case "FETCH_BLOG_DATA_SUCCESS":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: false,
+        result: action.result.data,
+        error: null,
+      };
+
+    case "FETCH_BLOG_DATA_FAILED":
+      //return action.error;
+      return {
+        ...state,
+        fetching: false,
+        result: null,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
+const commentReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "FETCH_COMMENT":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: true,
+        result: null,
+        error: null,
+      };
+    case "FETCH_COMMENT_SUCCESS":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: false,
+        result: action.result.data,
+        error: null,
+      };
+
+    case "FETCH_COMMENT_FAILED":
+      //return action.error;
+      return {
+        ...state,
+        fetching: false,
+        result: null,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
+const commentDataReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "FETCH_COMMENT_DATA":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: true,
+        result: null,
+        error: null,
+      };
+    case "FETCH_COMMENT_DATA_SUCCESS":
+      //return action.result.data;
+      return {
+        ...state,
+        fetching: false,
+        result: action.result.data,
+        error: null,
+      };
+
+    case "FETCH_COMMENT_DATA_FAILED":
+      //return action.error;
+      return {
+        ...state,
+        fetching: false,
+        result: null,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+};
+export default combineReducers({
+  movieReducer,
+  addBlogReducer,
+  blogReducer,
+  blogDataReducer,
+  commentReducer,
+  commentDataReducer,
+});
